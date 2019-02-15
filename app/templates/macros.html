@@ -1,0 +1,29 @@
+<!--display blog in macros-->
+{% macro displayBlog(blog_list) %}
+    {% for blog in blog_list %}
+        <h3 class="title"><a href="/blog/{{blog.id}}">{{blog.title}}</a></h3>
+        <p class="posted">Posted on: <b>{{blog.posted}}</b></p>
+        <hr>
+    {% endfor %}
+    
+{% endmacro %}
+
+{% macro displayComments(comment_list) %}
+{% for comment in comment_list %}
+<div class="row col-lg-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p class="writer">Pitch Writer: <i>{{ comment.name }}</i></p> 
+        </div>
+        <div class="panel-body">
+            <p class="comment">{{ comment.comment_itself}}</p>
+        </div>
+        <div class="panel-footer">
+            <i class="posted">{{comment.posted}}</i>
+        </div>
+    </div>
+</div>
+            
+{% endfor %}
+
+{% endmacro %}
