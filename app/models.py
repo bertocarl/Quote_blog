@@ -120,3 +120,12 @@ class Subscribe(db.Model):
 
     def __repr__(self):
         return f'{self.email}'
+
+class Quotes:
+    def __init__(self,author,id,quote,permalink):
+        
+        self.source = source
+        self.author = author
+        self.id = id
+        self.permalink = permalink
+        
