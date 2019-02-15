@@ -4,7 +4,7 @@ from flask_login import login_required,current_user
 from ..models import User,Blog,Comment,Subscribe
 from .forms import UpdateProfile,BlogForm,CommentForm,SubscribeForm
 from .. import db
-from ..email import mail_message
+# from ..email import mail_message
 import markdown2
 
 @main.route('/')
