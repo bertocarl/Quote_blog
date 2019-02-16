@@ -6,14 +6,15 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
-        
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/"> <a href="/" class="btn btn-md buttons">
         <span class="glyphicon glyphicon-home"></span> Home
       </a></a>
       &nbsp;
       {% if current_user.is_authenticated %}
-      <a href="/blog/new" class="btn btn-md buttons">Add New Blog Post  &nbsp;<span class="glyphicon glyphicon-plus"></span></a>
+      <a href="/blog/new" class="btn btn-md buttons">New Blog  &nbsp;<span class="glyphicon glyphicon-plus"></span></a>
       &nbsp;
       {% endif %}
       <a href="/subscribe" class="btn btn-md buttons">Subscribe:  &nbsp;<span class="glyphicon glyphicon-envelope"></span></a>

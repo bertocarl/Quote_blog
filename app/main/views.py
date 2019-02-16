@@ -1,10 +1,10 @@
 from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from flask_login import login_required,current_user
-from ..models import User,Blog,Comment,Subscribe
+from ..models import User,Blog,Comment,Category,Subscribe
 from .forms import UpdateProfile,BlogForm,CommentForm,SubscribeForm
 from .. import db
-# from ..email import mail_message
+from ..email import mail_message
 import markdown2
 
 @main.route('/')
@@ -13,7 +13,7 @@ def index():
     View root page function that returns the index page and its data
     '''
     
-    title = 'Welcome to Quotes Blog Website'
+    title = 'Home of the best Blogs'
 
     return render_template('index.html',title=title)
 
@@ -69,7 +69,8 @@ def new_blog():
         print(subscribers)
         for subscriber in subscribers:
             print(subscriber.email)
-           
+            # mail_message("New Blog Alert!!", "email/new_blog", subscriber.email)
+        #     mail_message("New Blog Notice!!","email/new_blog",subscriber.email, subscriber=subscriber)
         return redirect(url_for('main.index'))
     return render_template('new_blog.html',blog_form = form)
     
@@ -82,7 +83,7 @@ def see_blogs(id):
     comments = Comment.get_blog_comments(id)
 
 
-    title = 'Welcome to Quotes Blog'
+    title = 'Home of the best Blogs'
     return render_template('blog.html',comments = comments,title = title,blog = blog,blog_form = form,user = user)
 
 @main.route('/comment/new/<int:id>',methods=['GET','POST'])
@@ -115,8 +116,11 @@ def subscribe():
         db.session.add(subscriber)
         db.session.commit()
 
+        # mail_message("Welcome to The Home of the best Blogs","email/subscribe_user",subscriber.email,subscriber=subscriber)
+        # flash('A subscription confirmation has been sent to you via email')
+
         return redirect(url_for('main.index'))
 
         title = 'Subscribe Now'
 
-    return render_template('subscribe.html',subscribe_form = form)
+    return render_template('subscription.html',subscribe_form = form)

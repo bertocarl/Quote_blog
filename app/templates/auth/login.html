@@ -4,14 +4,17 @@
 {% block content%}
 
 <div class="container login">
-   <br>
+  <br>
+  <br>
+  <br>
+  <br>
   <div class="well">
       <div class="row">
 
           <div class="col-md-2"> </div>
       
           <div class="col-md-8">
-           
+            <!-- Flash message -->
             {% for message in get_flashed_messages() %}
                 <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -35,3 +38,15 @@
 
 
 {%endblock%}
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Nunito|PT+Serif');
+
+   .login{
+      font-size: 16.5px;
+      font-family: 'Nunito Sans', sans-serif !important;
+      color:#fed766;
+    }
+    .dont{
+      font-size: 16px;
+    }
+</style>

@@ -5,7 +5,15 @@
         <p class="posted">Posted on: <b>{{blog.posted}}</b></p>
         <hr>
     {% endfor %}
-    
+    <style>
+            @import url('https://fonts.googleapis.com/css?family=Nunito');
+           .title{
+               font-family: 'Nunito', sans-serif !important; 
+           }
+           .posted{
+               font-family: 'Nunito', sans-serif !important;
+           }
+       </style>
 {% endmacro %}
 
 {% macro displayComments(comment_list) %}
@@ -13,7 +21,7 @@
 <div class="row col-lg-4">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <p class="writer"> Writer: <i>{{ comment.name }}</i></p> 
+            <p class="writerr">Pitch Writer: <i>{{ comment.name }}</i></p> 
         </div>
         <div class="panel-body">
             <p class="comment">{{ comment.comment_itself}}</p>
@@ -25,5 +33,19 @@
 </div>
             
 {% endfor %}
-
+<style>
+     @import url('https://fonts.googleapis.com/css?family=Nunito');
+    .writerr{
+        font-family: 'Nunito', sans-serif !important;
+        color: black;
+    }
+    .comment{
+        font-family: 'Nunito', sans-serif !important;
+        color: black;
+    }
+    .posted{
+        font-family: 'Nunito', sans-serif !important;
+        color: black;
+    }
+</style>
 {% endmacro %}
