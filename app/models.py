@@ -78,25 +78,6 @@ class Blog(db.Model):
     def delete_all_blogs(cls):
         Blog.all_blogs.delete()
 
-class Category(db.Model):
-    '''
-    Function that will define all the different categories of blogs.
-    '''
-    __tablename__ ='categories'
-
-
-    id = db.Column(db.Integer, primary_key=True)
-    category_name = db.Column(db.String(255))
-    category_description = db.Column(db.String(255))
-
-    @classmethod
-    def get_categories(cls):
-        '''
-        Function that queries the database and returns all the categories from the database
-        '''
-        categories = Category.query.all()
-        return categories
-
 
 class Comment(db.Model):
     comments_list=[]
