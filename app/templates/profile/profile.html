@@ -3,9 +3,7 @@
 {% block content %}
 <body>
         <div class="container">
-                <br>
-                <br>
-                
+                              
                 <div class="row">
                     <!-- Displaying profile photo -->
                     <div class="col-md-4">
@@ -29,8 +27,7 @@
                         {% if user.bio %}
                         <p>{{user.bio}}</p>
                         {% else %}
-                        <br>
-                        <br>
+                        
                         <p class="no">{{user.username| capitalize}} has no bio</p>
                         {% endif %}
             

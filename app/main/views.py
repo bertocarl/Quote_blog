@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from flask_login import login_required,current_user
-from ..models import User,Blog,Comment,Category,Subscribe
+from ..models import User,Blog,Comment,Subscribe
 from .forms import UpdateProfile,BlogForm,CommentForm,SubscribeForm
 from .. import db
 from ..email import mail_message
@@ -13,7 +13,7 @@ def index():
     View root page function that returns the index page and its data
     '''
     
-    title = 'Home of the best Blogs'
+    title = 'Blogger Application'
 
     return render_template('index.html',title=title)
 
@@ -83,7 +83,7 @@ def see_blogs(id):
     comments = Comment.get_blog_comments(id)
 
 
-    title = 'Home of the best Blogs'
+    title = 'Blogger Application'
     return render_template('blog.html',comments = comments,title = title,blog = blog,blog_form = form,user = user)
 
 @main.route('/comment/new/<int:id>',methods=['GET','POST'])
@@ -116,11 +116,10 @@ def subscribe():
         db.session.add(subscriber)
         db.session.commit()
 
-        # mail_message("Welcome to The Home of the best Blogs","email/subscribe_user",subscriber.email,subscriber=subscriber)
-        # flash('A subscription confirmation has been sent to you via email')
-
+        
         return redirect(url_for('main.index'))
 
         title = 'Subscribe Now'
 
     return render_template('subscription.html',subscribe_form = form)
+
