@@ -5,9 +5,7 @@ from ..import db,photos
 from ..models import User,Blog,Comment
 from flask_login import login_required,current_user
 import markdown2
-# from urllib import request
-# import json
-# import threading
+
 
 
 #Views
