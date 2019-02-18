@@ -85,12 +85,12 @@ def blog_comment(id):
     if form.validate_on_submit():
         comment = form.comment.data
 
-        new_comment = Comment(id=id,comment=comment,user_id=current_user.id)
+        new_comment = Comment(comment=comment)
 
         new_comment.save_comment()
         return redirect(url_for('main.blog_comment',id=id))
-        comments = Comment.query.all()
-        return render_template('blog_comment.html',comment=comment,blog=blog,comment_form=form,comments=comments)
+    comments = Comment.query.all()
+    return render_template('blog_comment.html',comment=comment,blog=blog,comment_form=form,comments=comments)
 
 
 @main.route('/user/<uname>')

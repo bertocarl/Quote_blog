@@ -68,7 +68,7 @@ class Comment(db.Model):
     comment = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     blog_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    
 
     def save_comment(self):
         db.session.add(self)
