@@ -1,25 +1,37 @@
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf%}
 <!-- Content block -->
-{% block content %} 
+{% block content %}
     <body>
         <title> {{ title }} </title>
     
         <div class="container">
+               
             <div class="well">
-                <div class="row">
-                    <div class="col-md-2 col-lg-2"></div>
-                        <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8 create-comment">
-                            <p class="btn-btn-success">
-                                    {{ wtf.quick_form(subscribe_form) }}
+                    <div class="row">
+                
+                            <div class="col-md-2 col-lg-2">
+                                
+                            </div>
+                
+                            <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8 create-comment">
+                            
+                              
+                                <p class="btn-btn-success">
+                                        {{ wtf.quick_form(subscribe_form) }}
                                     {{submit}}
-                            </p>
+
+                                </p>
+                                
+                            </div>
+                
+                            <div class="col-md-2 col-lg-2">
+                                
+                            </div>
+                
                         </div>
-                        <div class="col-md-2 col-lg-2"></div>
-                </div>
             </div>
         </div> 
     </body>
 
-
-    {% endblock %}
+{% endblock %}

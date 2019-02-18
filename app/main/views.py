@@ -9,34 +9,39 @@ import markdown2
 
 
 #Views
-@main.route("/")
-def index():
-    """
-    View root page function that return the index page and its data
-    """
-    blogs = Blog.query.all()
-
-    title = "Bloggers Paradise"
-    return render_template('index.html',title=title,blogs=blogs)
-
 # @main.route("/")
-# @login_required
 # def index():
-#    # threading.Timer(5.0, printit).start()
-#    response = request.urlopen('http://quotes.stormconsultancy.co.uk/random.json')
+#     """
+#     View root page function that return the index page and its data
+#     """
+#     blogs = Blog.query.all()
 
-#    if response.code==200:
-#       read_Data=response.read()
+#     title = "Bloggers Paradise"
+#     return render_template('index.html',title=title,blogs=blogs)
 
-#       JSON_object = json.loads(read_Data.decode('UTF-8'))
-#       print(JSON_object)
-#       author = JSON_object['author']
-#       id = JSON_object['id']
-#       quote = JSON_object['quote']
-#       permalink = JSON_object['permalink']
+from urllib import request
+import json
+import threading
 
-#       head = "Bloggers Paradise"
-#     return render_template("index.html", head = head, author = author, id = id, quote = quote, permalink = permalink)
+
+@main.route("/")
+
+def index():
+   
+   response = request.urlopen('http://quotes.stormconsultancy.co.uk/random.json')
+
+   if response.code==200:
+    read_Data=response.read()
+
+    JSON_object = json.loads(read_Data.decode('UTF-8'))
+    print(JSON_object)
+    author = JSON_object['author']
+    id = JSON_object['id']
+    quote = JSON_object['quote']
+    permalink = JSON_object['permalink']
+
+    head = "Bloggers Paradise"
+    return render_template("index.html", head = head, author = author, id = id, quote = quote, permalink = permalink)
 
 @main.route("/post",methods=['GET','POST'])
 @login_required
@@ -137,14 +142,14 @@ def subscribe():
     form=SubscribeForm()
 
     if form.validate_on_submit():
-        subscriber = Subscribe(email=form.email.data)
+       subscriber = Subscribe(email=form.email.data)
 
-        db.session.add(subscriber)
-        db.session.commit()
+       db.session.add(subscriber)
+       db.session.commit()
 
         
-        return redirect(url_for('main.index'))
+       return redirect(url_for('main.index'))
 
-        title = 'Subscribe Now'
+       title = 'Subscribe Now'
 
     return render_template('subscribe.html',subscribe_form = form)
