@@ -40,6 +40,9 @@ def index():
     quote = JSON_object['quote']
     permalink = JSON_object['permalink']
 
+    #  blogs = Blog.query.all()
+    # posts = Post.query.all()
+
     head = "Bloggers Paradise"
     return render_template("index.html", head = head, author = author, id = id, quote = quote, permalink = permalink)
 
@@ -153,3 +156,17 @@ def subscribe():
        title = 'Subscribe Now'
 
     return render_template('subscribe.html',subscribe_form = form)
+@main.route('/post/new<int:id>',methods=['GET','POST'])
+@login_required
+def new_post(id):
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+
+        db.session.add(post)
+        db.session.commit()
+
+        flash('Your post has been created!','success')
+        return redirect(url_for('main.index'))
+
+        title = 'New Post'
+    return render_template('create_post.html',form = form)
