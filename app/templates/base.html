@@ -1,24 +1,13 @@
-{% extends 'bootstrap/base.html' %}
-{% block navbar%}
-    {% include 'navbar.html' %}
-{% endblock %}
-{% block styles %}
-    {{ super() }}
-    
-    <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}"> -->
-    <!-- <link rel="stylesheet" href="{{url_for('static',filename='js/main.js')}}"> -->
-  
-   
-    
-    {{simplemde.css}}
-    {{simplemde.js}}
-    {% endblock %}
-    
-   
-    
-    
-<body>
-    <br>
-    
+{% extends 'bootstrap/base.html'%}
 
-</body>
+<!-- Navbar Block -->
+{% block navbar %}
+  {% include 'navbar.html' %}
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <!-- Importing the simple mde css and js files -->
+  {{simplemde.css}}
+  {{ simplemde.js}}
+{% endblock %}

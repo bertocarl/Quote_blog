@@ -1,37 +1,30 @@
-
-
 <div class="navbar navbar-inverse" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/"> <a href="/" class="btn btn-md buttons">
-        <span class="glyphicon glyphicon-home"></span> Home
-      </a></a>
-      &nbsp;
-      {% if current_user.is_authenticated %}
-      <a href="/blog/new" class="btn btn-md buttons">New Blog  &nbsp;<span class="glyphicon glyphicon-plus"></span></a>
-      &nbsp;
-      {% endif %}
-      <a href="/subscribe" class="btn btn-md buttons">Subscribe:  &nbsp;<span class="glyphicon glyphicon-envelope"></span></a>
-      &nbsp;
-      <a href="/subscribe" class="btn btn-md buttons">Subscribe:  &nbsp;<span class="glyphicon glyphicon-envelope"></span></a>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Blog</a>
+            <a class="navbar-brand" href="/subscribe">Subscribe</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+
+
+              {% if current_user.is_authenticated %}
+                <li style="color:white;padding:15px;"><{{current_user.username}}</li>
+                <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
+                <li><a href="{{url_for('auth.logout')}}">Sign Out</a></li>
+              {% else %}
+                <li><a href="{{url_for('auth.login')}}">Sign In</a></li>
+              {% endif %}
+
+            </ul>
+        </div>
+
     </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        {% if current_user.is_authenticated %}
-        <li><a href="{{url_for('main.profile',uname=current_user.username)}}" class="profile" style="color:aqua; font-weight:bolder;">Profile</a></li>
-        <li><a href="{{url_for('main.profile',uname=current_user.username)}}" class="user"style="color:aqua; font-weight:bolder;"><span class="glyphicon glyphicon-user"></span> &nbsp;{{current_user.username}}</a></li>
-        <li><a href="{{url_for('auth.logout')}}" class="logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</a></li>
-        {% else %}
-        <li><a href="{{url_for('auth.login')}}" class="login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Log in</a></li>
-        {% endif %}
-      </ul>
-    </div>
-    
-  </div>
 </div>

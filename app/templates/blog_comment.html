@@ -1,0 +1,67 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+<!-- Content block -->
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link rel="shortcut icon" href="https://icon2.kisspng.com/20180320/upw/kisspng-computer-icons-idea-incandescent-light-bulb-clip-a-black-idea-icon-5ab0cae1715936.7716735415215357134643.jpg">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+   
+{% endblock %}
+
+
+{% block content %}
+  <!-- <div class="row"> -->
+  <div class="col-xs-12 col-sm-4 col-md-5 col-lg-5">
+       <div class="panel">
+       <div class="panel-body">
+           <h2>{{ blog.blog_title }}</h2>
+           <h4>{{ blog.category}}</h4>
+
+           <p>{{ blog.blog_body }}</p>
+           <div class="text-center">
+             <div class="col-md-6">
+            <a href="/blog_comment/{{blog.id}}?like=1" ><i   class="fas fa-thumbs-up"> {{blog.like}}</i></a>
+           </div>
+           <div class="col-md-6">
+            <a href="/blog_comment/{{blog.id}}?dislike=1"> <i  class="fas fa-thumbs-down">  {{ blog.dislike}}</i></a>
+           </div>
+           </div>
+
+           <blockquote >
+             <footer>Posted by:
+               <cite > {{ blog.user.username}}</cite>
+               on
+               <cite > {{ blog.posted.strftime('%Y-%m-%d')}}</cite>
+             </footer>
+           </blockquote>
+           <div class="text-center">
+           <a href="/blog_comment/{{blog.id}}" class="btn btn-primary">Comment</a>
+           <a href="/blog_comment/{{blog.id}}" class="btn btn-primary">Delete</a>
+         </div>
+         </div>
+       </div>
+     </div>
+
+        <div class="col-md-4">
+          <div class="panel">
+            <div class="panel-body">
+
+            {{ wtf.quick_form(comment_form) }}
+            {{simplemde.load}}
+        </div>
+      </div>
+      </div>
+
+<div class="col-md-12">
+    <h2><span class="panel">Comments</span></h2>
+    {%for comment in comment %}
+         <div class="well" style="width: 25rem">
+             <p>{{ comment.comment}}</p>
+             <p>Time posted: {{ comment.posted.strftime('%Y-%m-%d')}}</p>
+             <a href="/blog_comment/{{blog.id}}" class="btn btn-primary">Delete</a>
+       </div>
+     {% endfor %}
+</div>
+{% endblock %}

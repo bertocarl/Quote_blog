@@ -1,0 +1,4 @@
+Hello {{user.username}}
+Welcome to Blogger!
+We have just seen you have signed up to our application and want to welcome you to the family. Please enjoy testing out your blogging experience as well as reviewing other users blogs.
+For more feedback on the application and how we can make your experience better please contact us on email-aomware@gmail.com and mobile +254723886448

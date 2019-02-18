@@ -1,0 +1,48 @@
+body{
+  background-image: url("");
+}
+p{
+  font-size: 20px;
+  font-family: 'Slabo 27px', serif;
+}
+h2{
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Indie Flower', cursive;
+}
+h4{
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Loved by the King', cursive;
+}
+
+a{
+  font-size: 20px;
+}
+.jumbotron {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height:140px;
+    width: 550px;
+    margin: auto;
+    float: left;
+   
+
+    background-position: 0% 7%;
+    background-color: silver;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#post-form{
+  float: centre;
+  /* margin-right: 32%; */
+}
+#bio{
+  font-size: 50%;
+  float: left;
+  margin-left: 3%;
+  font-weight: bold;
+}
+#register,#login{
+  font-size: 18px;
+}
