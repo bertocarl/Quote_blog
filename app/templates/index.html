@@ -11,34 +11,54 @@
     {% endblock %}
 
 {% block content %}
-<a href="/post" class="btn btn-danger btn-lg">Create Blog</a>
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="editModalLabel">Update Blog</h4>
-      </div>
-      <div class="modal-body">
-        <form role="form">
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">Title:</label>
-            <input type="text" class="form-control" id="editTitle">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="control-label">Description:</label>
-            <textarea class="form-control" id="editDescription"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="btnUpdate" type="button" class="btn btn-primary">Update</button>
-      </div>
+<body>
+<div class="header">
+  <h2>Bloggers Paradise</h2>
+  <a href="/post" class="btn btn-primary btn-small">Create Blog</a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Posted Blogs</h2>
+      
+    </div>
+    <div class="card">
+      <h2>Comments</h2>
+    </div>
+   
+  </div>
+  ## Right column
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>Random Quotes</h2>
+      
+    </div>
+    
+    <div class="card">
+      <h3>Subscribe to our Posts</h3>
+      <p>Some text..</p>
     </div>
   </div>
+  ## end right column
 </div>
-  {% for blog in blogs  %}
+
+<div class="footer">
+  <h4>Blogger Application 2019 Designed by Albert Carlos</h4>
+</div>
+
+</body>
+<script>
+  body  {
+        background-color: #333333;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+</script>
+
+  <!-- {% for blog in blogs  %}
   <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
        <div class="panel">
        <div class="panel-body">
@@ -62,12 +82,12 @@
                <cite > {{ blog.posted.strftime('%Y-%m-%d')}}</cite>
              </footer>
            </blockquote>
-           <div class="text-center">
-           <a href="/blog_comment/{{blog.id}}" class="btn btn-primary">Comment</a>
-         </div>
+            <div class="text-center">
+              <a href="/blog_comment/{{blog.id}}" class="btn btn-primary">Comment</a>
+            </div>
          </div>
        </div>
-     </div>
-     
+     </div> -->
+    
    {% endfor %}
 {% endblock %}

@@ -5,6 +5,10 @@ from ..import db,photos
 from ..models import User,Blog,Comment
 from flask_login import login_required,current_user
 import markdown2
+# from urllib import request
+# import json
+# import threading
+
 
 #Views
 @main.route("/")
@@ -16,6 +20,25 @@ def index():
 
     title = "Bloggers Paradise"
     return render_template('index.html',title=title,blogs=blogs)
+
+# @main.route("/")
+# @login_required
+# def index():
+#    # threading.Timer(5.0, printit).start()
+#    response = request.urlopen('http://quotes.stormconsultancy.co.uk/random.json')
+
+#    if response.code==200:
+#       read_Data=response.read()
+
+#       JSON_object = json.loads(read_Data.decode('UTF-8'))
+#       print(JSON_object)
+#       author = JSON_object['author']
+#       id = JSON_object['id']
+#       quote = JSON_object['quote']
+#       permalink = JSON_object['permalink']
+
+#       head = "Bloggers Paradise"
+#     return render_template("index.html", head = head, author = author, id = id, quote = quote, permalink = permalink)
 
 @main.route("/post",methods=['GET','POST'])
 @login_required
@@ -67,10 +90,9 @@ def blog_comment(id):
         new_comment = Comment(id=id,comment=comment,user_id=current_user.id)
 
         new_comment.save_comment()
-        new_comment.append_comment()
         return redirect(url_for('main.blog_comment',id=id))
-    comments = Comment.query.all()
-    return render_template('blog_comment.html',comment=comment,blog=blog,comment_form=form,comments=comments)
+        comments = Comment.query.all()
+        return render_template('blog_comment.html',comment=comment,blog=blog,comment_form=form,comments=comments)
 
 
 @main.route('/user/<uname>')
@@ -128,24 +150,3 @@ def subscribe():
         title = 'Subscribe Now'
 
     return render_template('subscribe.html',subscribe_form = form)
-# @main.route('/getBlogById',methods=['POST'])
-# def getBlogById():
-#     try:
-#         if session.get('user'):
- 
-#             _id = request.form['id']
-#             _user = session.get('user')
- 
-#             conn = psql.connect()
-#             cursor = conn.cursor()
-#             cursor.callproc('sp_GetBlogById',(_id,_user))
-#             result = cursor.fetchall()
- 
-#             blog = []
-#             blog.append({'Id':result[0][0],'Title':result[0][1],'Description':result[0][2]})
- 
-#             return json.dumps(blog)
-#         else:
-#             return render_template('error.html', error = 'Unauthorized Access')
-#     except Exception as e:
-#         return render_template('error.html',error = str(e))

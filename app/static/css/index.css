@@ -1,7 +1,6 @@
-body{
-  background-image: url("");
-}
-p{
+
+
+/* p{
   font-size: 20px;
   font-family: 'Slabo 27px', serif;
 }
@@ -14,10 +13,10 @@ h4{
   text-align: center;
   font-size: 30px;
   font-family: 'Loved by the King', cursive;
-}
+} */
 
 a{
-  font-size: 20px;
+  font-size: 14px;
 }
 .jumbotron {
     margin-top: 0px;
@@ -45,4 +44,67 @@ a{
 }
 #register,#login{
   font-size: 18px;
+}
+{
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: Arial;
+  padding: 20px;
+  background:#333333;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  font-size: 20px;
+  text-align: center;
+  background: #643173;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+
+/* Add a card effect for articles */
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 10px;
+  text-align: center;
+  background: #643173;
+  margin-top: 10px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
 }
