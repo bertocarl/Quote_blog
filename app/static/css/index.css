@@ -2,7 +2,7 @@ a,p,h1,h4,h5,h6{
   font-size: 14px;
   color: #643173;
 }
-h2{
+h2, h3{
   color:#e1dd8f;
 }
 
@@ -45,37 +45,6 @@ body {
   background: #643173;
   margin-top: 10px;
 }
-/* div {
-  width: 25%;
-  height: 50%;
-} */
-.login {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
-}
-.login100-form {
-  width: 100%;
-}
-
-.login100-form-title {
-  display: block;
-  font-family: Poppins-Bold;
-  font-size: 39px;
-  color: #333333;
-  line-height: 1.2;
-  text-align: center;
-}
-
-.login100-form-avatar {
-  display: block;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-.login100-form-avatar img {
-  width: 100%;
+.jumbotron {
+  background-color:#643173;
 }
