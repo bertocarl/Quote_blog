@@ -27,7 +27,7 @@ a,h2, h3{
 body {
   font-family: Arial;
   padding: 20px;
-  background:#e1dd8f;
+  background;
 }
 
 /* Header/Blog Title */
@@ -36,14 +36,6 @@ body {
   font-size: 20px;
   text-align: center;
   background: #643173;
-}
-
-/* Footer */
-.footer {
-  padding: 10px;
-  text-align: center;
-  background: #643173;
-  margin-top: 10px;
 }
 .jumbotron {
   background-color:#643173;
