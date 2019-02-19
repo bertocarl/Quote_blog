@@ -33,8 +33,5 @@ body {
 
 .jumbotron {
   background-color: #643173;
-}
-
-.form{
-float: right;
+  align-content: center;
 }

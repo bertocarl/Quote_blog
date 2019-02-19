@@ -1,6 +1,5 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-import requests
 from .forms import BlogForm,UpdateProfile,CommentForm
 from ..import db,photos
 from ..models import User,Blog,Comment
@@ -10,7 +9,7 @@ import markdown2
 @main.route("/")
 def index():
    
-    response = requests.get('http://quotes.stormconsultancy.co.uk/random.json')
+    response = request.get('http://quotes.stormconsultancy.co.uk/random.json')
 
     quote = response.json()
        
@@ -131,7 +130,7 @@ def subscribe():
        db.session.commit()
 
        
-       return redirect(url_for('main.index'))
+       return redirect(url_for('main.index', subscribe = subscribe))
 
        title = 'Subscribe Now'
 
