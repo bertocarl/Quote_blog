@@ -1,50 +1,24 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
+import requests
 from .forms import BlogForm,UpdateProfile,CommentForm
 from ..import db,photos
 from ..models import User,Blog,Comment
 from flask_login import login_required,current_user
 import markdown2
 
-
-
-#Views
-# @main.route("/")
-# def index():
-#     """
-#     View root page function that return the index page and its data
-#     """
-#     blogs = Blog.query.all()
-
-#     title = "Bloggers Paradise"
-#     return render_template('index.html',title=title,blogs=blogs)
-
-from urllib import request
-import json
-import threading
-
-
 @main.route("/")
-
 def index():
    
-   response = request.urlopen('http://quotes.stormconsultancy.co.uk/random.json')
+    response = requests.get('http://quotes.stormconsultancy.co.uk/random.json')
 
-   if response.code==200:
-    read_Data=response.read()
-
-    JSON_object = json.loads(read_Data.decode('UTF-8'))
-    print(JSON_object)
-    author = JSON_object['author']
-    id = JSON_object['id']
-    quote = JSON_object['quote']
-    permalink = JSON_object['permalink']
-
-    #  blogs = Blog.query.all()
-    # posts = Post.query.all()
-
+    quote = response.json()
+    
     head = "Bloggers Paradise"
-    return render_template("index.html", head = head, author = author, id = id, quote = quote, permalink = permalink)
+    blogs = Blog.query.all()
+
+    title = "Bloggers Paradise"
+    return render_template("index.html", quote = quote, title = title, head = head, blogs = blogs)
 
 @main.route("/post",methods=['GET','POST'])
 @login_required
@@ -57,15 +31,16 @@ def post():
         like=0
         dislike=0
 
-        # Updated blog instance
+        # New blog instance
         new_blog = Blog(blog_title=title,blog_body=blog,category=category,like=like,dislike=dislike,user=current_user)
 
         # save blog method
         new_blog.save_blog()
-        return redirect(url_for('main.post'))
+        
+        return redirect(url_for('main.index'))
 
-    title="Post your blog"
-    return render_template('post.html',title=title,blog_form=form)
+    title="New Post"
+    return render_template('index.html',title=title,blog_form=form, div ="New Post")
 
 @main.route('/blog_comment/<int:id>',methods=['GET','POST'])
 
@@ -141,8 +116,9 @@ def update_pic(uname):
         db.session.commit()
 
     return redirect(url_for('main.profile',uname=uname))
+@main.route('/subscribe',methods=['GET','POST'])
 def subscribe():
-    form=SubscribeForm()
+    form = SubscribeForm()
 
     if form.validate_on_submit():
        subscriber = Subscribe(email=form.email.data)
@@ -150,23 +126,26 @@ def subscribe():
        db.session.add(subscriber)
        db.session.commit()
 
-        
+       
        return redirect(url_for('main.index'))
 
        title = 'Subscribe Now'
 
-    return render_template('subscribe.html',subscribe_form = form)
-@main.route('/post/new<int:id>',methods=['GET','POST'])
+
+    return render_template('subscribe.html',subscribe_form = form, tittle = title)
+
+
+@main.route("/post/update",methods=['GET','POST'])
 @login_required
-def new_post(id):
-    if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+def update_post(blog_id):
+    blog =Blog.query.get_or_404(blog_id)
+    if blog.author != current_user:
+        abort (403)
+    
+    form = BlogForm()
+    form.title.data = post.title
+    form.content.data = post.content
 
-        db.session.add(post)
-        db.session.commit()
+    title="update Post"
 
-        flash('Your post has been created!','success')
-        return redirect(url_for('main.index'))
-
-        title = 'New Post'
-    return render_template('create_post.html',form = form)
+    return render_template('post.html',title=tidle,blog_form=form, div ="Update Post")

@@ -14,12 +14,13 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
-                <li><a href="/post">Create Blog</a></li>
                 <li><a href="/subscribe">Subscribe</a></li>
 
 
               {% if current_user.is_authenticated %}
-                <li style="color:#71f79f;padding:15px;"><{{current_user.username}}</li>
+                <li><a href="/post">Create Blog</a></li>
+                <li><a href="/post/update">Update Blog</a></li>
+                <li style="color:blue;padding:15px;"><{{current_user.username}}</li>
                 <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
                 <li><a href="{{url_for('auth.logout')}}">Sign Out</a></li>
               {% else %}

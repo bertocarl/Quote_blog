@@ -13,13 +13,14 @@
 {% block content %}
 <body>
 <div class="jumbotron text-center">
-  <h3> {{quote}}</h3>
-  <h3>{{author}}</h3>
-  <a href="{{permalink}}">Permalink</a>
+  <h3> {{quote['author']}}</h3>
+  <h3> {{quote['quote']}}</h3>
+  <h3> {{quote['permalink']}}</h3>
 </div>
 
   {% for blog in blogs  %}
-  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+  <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <img class="rounded-circle article-img" src="{{url_for('static', filename='photos/')}}">
        <div class="panel">
        <div class="panel-body">
            <h2>{{ blog.blog_title }}</h2>
@@ -47,9 +48,9 @@
             </div>
          </div>
        </div>
-     </div> 
+      </article> 
  
 
     
    {% endfor %}
-{% endblock %} -->
+{% endblock %} 
