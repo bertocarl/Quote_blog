@@ -8,7 +8,7 @@ By: Albert Carlos Omware
 This web-app allows the writters to submit their blogs,have them voted and commented upon.
 
 ## Setup/Installation Requirements
-* Live site can be accessed from the following link 
+* Live site can be accessed from the following link https://q-blogger.herokuapp.com/
 
 
 ### Known Bugs

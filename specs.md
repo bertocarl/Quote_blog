@@ -1,7 +1,7 @@
 # Blogger Application
 
 ## Setup/Installation Requirements
-* Live site can be accessed from the following link 
+* Live site can be accessed from the following link https://q-blogger.herokuapp.com/
 
 ### Known Bugs
 The blogs are of different sizes due to content in the blogs.
