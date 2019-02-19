@@ -5,11 +5,11 @@ from ..import db,photos
 from ..models import User,Blog,Comment
 from flask_login import login_required,current_user
 import markdown2
-
+import requests
 @main.route("/")
 def index():
    
-    response = request.get('http://quotes.stormconsultancy.co.uk/random.json')
+    response = requests.get('http://quotes.stormconsultancy.co.uk/random.json')
 
     quote = response.json()
        
