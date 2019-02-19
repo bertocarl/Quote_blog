@@ -13,16 +13,21 @@ def index():
     response = requests.get('http://quotes.stormconsultancy.co.uk/random.json')
 
     quote = response.json()
-    
-    head = "Bloggers Paradise"
+       
     blogs = Blog.query.all()
 
     title = "Bloggers Paradise"
-    return render_template("index.html", quote = quote, title = title, head = head, blogs = blogs)
+    return render_template("index.html", title = title, quote = quote, blogs = blogs)
 
 @main.route("/post",methods=['GET','POST'])
 @login_required
 def post():
+
+    response = requests.get('http://quotes.stormconsultancy.co.uk/random.json')
+
+    quote = response.json()
+
+
     form = BlogForm()
     if form.validate_on_submit():
         title = form.title.data
@@ -37,13 +42,12 @@ def post():
         # save blog method
         new_blog.save_blog()
         
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.post'))
 
     title="New Post"
-    return render_template('index.html',title=title,blog_form=form, div ="New Post")
+    return render_template('post.html',title=title,blog_form=form, quote = quote, div = "New Post")
 
 @main.route('/blog_comment/<int:id>',methods=['GET','POST'])
-
 def blog_comment(id):
     blog=Blog.query.get_or_404(id)
     comment= Comment.query.all()
@@ -121,7 +125,7 @@ def subscribe():
     form = SubscribeForm()
 
     if form.validate_on_submit():
-       subscriber = Subscribe(email=form.email.data)
+       subscriber = subscribe(email=form.email.data)
 
        db.session.add(subscriber)
        db.session.commit()
@@ -148,4 +152,4 @@ def update_post(blog_id):
 
     title="update Post"
 
-    return render_template('post.html',title=tidle,blog_form=form, div ="Update Post")
+    return render_template('post.html',title=title,blog_form=form, div ="Update Post")

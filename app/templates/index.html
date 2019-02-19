@@ -12,11 +12,11 @@
 
 {% block content %}
 <body>
-<div class="jumbotron text-center">
-  <h3> {{quote['author']}}</h3>
-  <h3> {{quote['quote']}}</h3>
-  <h3> {{quote['permalink']}}</h3>
-</div>
+  <div class = jumbotron>
+    <h3> {{quote['quote']}}</h3>
+    <h3> {{quote['author']}}</h3>
+    <h3> {{quote['permalink']}}</h3>
+    </div>
 
   {% for blog in blogs  %}
   <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4">

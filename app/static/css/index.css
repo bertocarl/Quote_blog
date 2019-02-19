@@ -27,16 +27,14 @@ a,h2, h3{
 body {
   font-family: Arial;
   padding: 20px;
-  background;
+  
 }
 
-/* Header/Blog Title */
-.header {
-  padding: 30px;
-  font-size: 20px;
-  text-align: center;
-  background: #643173;
-}
+
 .jumbotron {
-  background-color:#643173;
+  background-color: #643173;
+}
+
+.form{
+float: centre;
 }

@@ -9,9 +9,14 @@
     
 {% endblock %}
 
-{% block content %}
-
-<h3 class="text-center">Enter your blog in the form below</h3>
+  {% block content %}
+<div class = jumbotron>
+<h3> {{quote['quote']}}</h3>
+<h3> {{quote['author']}}</h3>
+<h3> {{quote['permalink']}}</h3>
+</div>
+  <form>
+  <h1 class="text-center">Enter your blog in the form below</h1>
 
         <div id="post-form" class="col-md-6" style= 'justify-content: center'>
           <div class="panel">
@@ -23,5 +28,8 @@
         </div>
       </div>
     </div>
+  </form>
+
+
 
 {% endblock %}
